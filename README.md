@@ -1,12 +1,22 @@
 #   GeTXT: Data Text Fetching and Cleaning System using Tweepy API and MongoDB Depaly on Heroku | Python3
 
 
-## How to run
 
-1. Clone my Repo
-4. Make a key.py file in root dir for connecting database and Tweepy API(If want to push Record to Database)
+## To deploy directly
+1. Fork this repo
+2. Go to Heroku Account 
+3. Connect your Repo
+4. Add environ as per var.py
+5. Deploy the main Branch
 
-- File format
+
+
+## How to run on Local
+
+1. Clone this Repo
+2. Make a key.py file in root dir for connecting database and Tweepy API(If want to push Record to Database)
+
+3. Key.py File format
 
 ```python
     # Tweepy Cunsumer Key
@@ -18,6 +28,7 @@
     # Mongo DB URI
     _mongo_uri = ""
 ```
+4. Go to var.py and "_deployment_env = False"
 
 5. Activate a virtual env
 ```python

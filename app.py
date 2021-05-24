@@ -21,17 +21,18 @@ def _main():
             thread.start()
             threads.append(thread)
             var._debug and print("A Thread => ", threading.active_count())
+            
             sleep(var._sleep_time_small) #small time  
             thread = threading.Thread(None, target=dataCollection._collect, args=(["Call center Reviews", "New Product Review", "Product Complaints", "Customer Service Center","Customer HelpCenter", "Amazon Product Reviews", "Service Reviews", "Company’s Reputation", "Product Comment"],), daemon=True)
             thread.start()
             threads.append(thread)
             var._debug and print("A Thread => ", threading.active_count())                    
-            sleep(var._sleep_time_small) #small time  
+            sleep(var._sleep_time_small) #small time              
             
-            dataCleaning._cleaning()
+            dataCollection._collect(["Amazon Product Reviews", "Product Reviews", "Call center Reviews", "Company’s Reputation", "Service Reviews", "Company Reviews"])
             var._debug and print("A Thread => ", threading.active_count())                    
             sleep(var._sleep_time_small) #small time  
-            dataCollection._collect(["Amazon Product Reviews", "Product Reviews", "Call center Reviews", "Company’s Reputation", "Service Reviews", "Company Reviews"])
+            dataCleaning._cleaning()
             var._debug and print("A Thread => ", threading.active_count())                    
             sleep(var._sleep_time_small) #small time  
         except KeyboardInterrupt:
