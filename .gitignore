@@ -1,0 +1,11 @@
+# Add file Store your Key HERE
+key.py
+
+# Cache
+__pycache__
+
+# Virtual env
+env
+
+# vscode
+.vscode
