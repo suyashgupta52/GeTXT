@@ -1,13 +1,14 @@
 try:
     import var
     import pymongo
-except Exception as e:
+except Exception as e:        
     exit("Exception: " + str(e))
 
 class MongoDB(object):
-    def __init__(self, client="tenet", db= None):
-        self.__client = pymongo.MongoClient(var._mongo_uri)
-        self.__col = self.__client[client or var._db_client][db or var._db_name]        
+    def __init__(self, client="tenet", document= None):
+        self.__client = pymongo.MongoClient(var._mongo_uri)        
+        __client = self.__client[client]        
+        self.__col = __client[document]        
         var._debug and print("MongoDB" + var._init_msg)
 
     def _insert(self, obj, _save=False):

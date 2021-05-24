@@ -8,7 +8,7 @@ try:
     from time import sleep    
     import var
     import json
-except Exception as e:
+except Exception as e:    
     exit("Exception: " + str(e))
 
 # Listen to stream and return it
@@ -20,7 +20,7 @@ class StdOutListener(StreamListener):
         self.__max_tweets =  _count + var._tweet_max_count
         var._debug and print("Max: ", self.__max_tweets)
         self.__pre = MTS()
-        self.__db = MongoDB(var._db_name, var._db_client)                
+        self.__db = MongoDB(var._db_client, var._db_name)
 
     def on_connect(self):
         var._debug and print("Tweepy Stream Connection Success!!")
@@ -39,7 +39,7 @@ class StdOutListener(StreamListener):
     def on_error(self, status_code):
         """Called when a non-200 status code is returned"""
         var._debug and print("Error Code: ", status_code)
-        return True
+        return False
 
     def on_timeout(self):
         """Called when stream connection times out"""        
@@ -90,9 +90,11 @@ class StdOutListener(StreamListener):
             sleep(var._sleep_time_small) #small time                    
             _text = self.__pre._demojis(_text, True)            
             
-            var._debug and print("Text MTS...")                        
-            sleep(var._sleep_time_small) #small time                    
-            _translated_text = self.__pre._translator(_text, True)            
+            # var._debug and print("Text MTS...")                        
+            # sleep(var._sleep_time_small) #small time                    
+            # _translated_text = self.__pre._translator(_text, True)            
+            # print(_translated_text)
+            # print(_translated_text[0])
             
             # Object of data
             self.__count += 1
@@ -100,15 +102,15 @@ class StdOutListener(StreamListener):
             
             if len(_text) <= var._min_text_len:
                 raise  Exception("Smaller Text!!")
-            
-            _obj = {"__text": _text, "lang": __lang, "_count": self.__count, "_translated_text": _translated_text[0], "_translated_text_polarity": _translated_text[1]}
+            # , "_translated_text": _translated_text[0], "_translated_text_polarity": _translated_text[1]
+            _obj = {"__text": _text, "lang": __lang, "_count": self.__count}
             var._debug and print("Inserting: ", _obj)                        
             sleep(var._sleep_time_small) #small time            
             self.__db._insert(_obj)            
         except Exception as e:
             var._debug and print("Exception: ",{e})            
 
-        var._debug and print("Insert Count: ", self.__count)
+        var._debug and print("Iteration Count: ", self.__count)
         return True        
 
 # Fetch Tweets from Tweepy

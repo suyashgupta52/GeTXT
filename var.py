@@ -1,20 +1,19 @@
 # Import Libs
-try:
-    import os
+try:    
     from os import environ
     import random
 except Exception as e:
     exit("Exception: " + str(e))
 
 # Define Variables
-_deployment_env = False
+_deployment_env = True
 
 if _deployment_env:
    # Prod ENV
    # Debug
     _debug = True
     # Sleep
-    _sleep_time_small = random.randint(1, 5)
+    _sleep_time_small = random.randint(1, 10)
     # tweepy 
     _tweet_max_count = 5000
     _tweet_limit = 1000    
@@ -29,10 +28,10 @@ else:
      # Debug
     _debug = True
     # Sleep
-    _sleep_time_small = 0.5     
+    _sleep_time_small = 0.5
     # tweepy 
-    _tweet_max_count = 10
-    _tweet_limit = 10
+    _tweet_max_count = 5
+    _tweet_limit = 5
     # Define Variables Keys    
     _consumer_key =  key._consumer_key 
     _consumer_secret = key._consumer_secret
@@ -41,6 +40,7 @@ else:
     _mongo_uri =  key._mongo_uri 
     
 _min_text_len = 150    
+_offset = random.randint(50, 200)
 # msg
 _init_msg = " Initiated !!"
 _complete_msg = " Completed!!"

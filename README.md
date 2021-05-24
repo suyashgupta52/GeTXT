@@ -21,26 +21,27 @@
 
 5. Activate a virtual env
 ```python
-    pip install virtualenv
-    virtualenv env
-    env\Scripts\activate
+pip install virtualenv
+virtualenv env
+env\Scripts\activate
 ```
 
 6. Install Requirements by Running
 ```python
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 8. Run 
 ```pyhton
-    py app.py
+py app.py
 ```
 
 10. Press Ctrl + c to stop the System Manually.
 
+11. Once All Done. To close Virtual env:
+```
+deactivate
+```
 
 
-
-
-This source code is licensed under the GPL-style license found in the
-LICENSE file in the root directory of this source tree. 
+#### This source code is licensed under the GPL-style license found in the LICENSE file in the root directory of this source tree. 

@@ -1,9 +1,7 @@
-try:
-    import googletrans
+try:    
     from googletrans import Translator
     from google_trans_new import google_translator
-    from textblob import TextBlob
-    from translate import Translator as trans
+    from textblob import TextBlob    
     import goslate
     import demoji
     import re
@@ -13,7 +11,7 @@ try:
     
     # run only once after installing module
     var._deployment_env and demoji.download_codes()
-except Exception as e:
+except Exception as e:    
     exit("Exception: " + str(e))
 
 
@@ -63,15 +61,13 @@ class MTS(object):
                     var._debug and print("Intermediate Translation: ", _text)
                 except:
                     try:
-                        _translator = trans(to_lang="en")
-                        _text = _translator.translate(_text)        
-                        var._debug and print("Intermediate Translation: ", _text)
+                        _text = str(TextBlob(_text).translate(to='en'))   
+                        var._debug and print("Text Intermediate Translation: ", _text)          
                     except:
                         var._debug and print("Exception: All Models Failed!!")                         
-        # Base Models
-        _text = str(TextBlob(_text).translate(to='en'))   
-        var._debug and print("Intermediate Translation: ", _text)          
+        # Base Models        
         _text = str(TextBlob(_text).correct())
+        var._debug and print("Text Correct: ", _text)          
         _sentiment = TextBlob(_text).sentiment.polarity
         var._debug and print("Translation Sentiment: ", _sentiment) 
         sleep(var._sleep_time_small) #small time
