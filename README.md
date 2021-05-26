@@ -16,6 +16,9 @@
 'MONGO_URI' => ' '
 ```
 5. Deploy the main Branch
+6. Once Build Success
+7. Goto `Overview` =? `Dyno formation` => `Configure Dynos` => Free Dynos and Start the switch.
+8. Go to `More` => `View Log` to check `log`.
 
 
 

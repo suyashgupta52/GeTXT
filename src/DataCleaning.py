@@ -10,7 +10,8 @@ try:
     import var
     
     # run only once after installing module
-    var._deployment_env and demoji.download_codes()
+    if var._deployment_env == True:
+        demoji.download_codes()
 except Exception as e:    
     exit("Exception: " + str(e))
 
