@@ -1,5 +1,7 @@
-# Add file Store your Key HERE
+# File for Keys
 key.py
+# Only for Reference 
+enVar.txt
 
 # Cache
 __pycache__

@@ -6,7 +6,15 @@
 1. Fork this repo
 2. Go to Heroku Account 
 3. Connect your Repo
-4. Add environ as per var.py
+4. Go to Setting tabb and Under `Config Vars` click on `Reveal Config Vars` then add environ as per var.py
+```python
+'key' => 'Value'
+'C_KEY' => ' ' 
+'C_SEC' => ' '
+'A_TOKEN' => ' '
+'A_SEC' => ' '
+'MONGO_URI' => ' '
+```
 5. Deploy the main Branch
 
 
