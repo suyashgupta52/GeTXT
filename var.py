@@ -15,8 +15,8 @@ if _deployment_env:
     # Sleep
     _sleep_time_small = random.randint(1, 10)
     # tweepy 
-    _tweet_max_count = 5000
-    _tweet_limit = 1000    
+    _tweet_max_count = 500
+    _tweet_limit = 500
     _consumer_key =    environ['C_KEY']   
     _consumer_secret = environ['C_SEC']
     _auth_token =    environ['A_TOKEN']
@@ -40,7 +40,7 @@ else:
     _mongo_uri =  key._mongo_uri 
     
 _min_text_len = 150    
-_offset = random.randint(50, 200)
+_offset = random.randint(0, 1500)
 # msg
 _init_msg = " Initiated !!"
 _complete_msg = " Completed!!"

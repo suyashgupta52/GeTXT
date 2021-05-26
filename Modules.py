@@ -11,12 +11,12 @@ except Exception as e:
 class DataCleaning(object):
     # init method
     def __init__(self):        
-        var._debug and print("Data Cleaning"+ var._init_msg)          
+        var._debug and print("Data Cleaning"+ var._init_msg)     
+        self.__count = 1     
 
     def _cleaning(self):        
         _db = MongoDB(var._db_client, var._db_name)
-        _mts = MTS()                        
-        
+        _mts = MTS()                                
         for data in _db._sorted_find({"_translated_text_polarity": None}, var._tweet_limit, var._offset):
             text = data['__text']
             id = data['_id']
@@ -34,11 +34,12 @@ class DataCleaning(object):
                 _db._delete({"_id": id})                            
                 continue
         
-            _obj = {"$set": {"_translated_text": _trans[0], "_translated_text_polarity": _trans[1]}}
+            _obj = {"$set": {"_translated_text": _trans[0], "_translated_text_polarity": _trans[1], "__count": self.__count}}
             var._debug and print("Updating: ", _obj)                        
             sleep(var._sleep_time_small) #small time                        
-            _db._update({"_id": id}, _obj)
-        var._debug and print("Data Claning" + var._complete_msg)
+            _db._update({"_id": id}, _obj)            
+            self.__count += 1
+            var._debug and print("Data Ready for CSV Count: ", self.__count)
     
     def __del__(self):
         var._debug and print("Data Cleaning"+ var._complete_msg)

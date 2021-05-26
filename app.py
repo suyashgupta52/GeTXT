@@ -28,13 +28,14 @@ def _main():
             threads.append(thread)
             var._debug and print("A Thread => ", threading.active_count())                    
             sleep(var._sleep_time_small) #small time              
-            
+            var._debug and print("Running Thread: ", threading.current_thread())      
             dataCollection._collect(["Amazon Product Reviews", "Product Reviews", "Call center Reviews", "Company’s Reputation", "Service Reviews", "Company Reviews"])
             var._debug and print("A Thread => ", threading.active_count())                    
             sleep(var._sleep_time_small) #small time  
             dataCleaning._cleaning()
-            var._debug and print("A Thread => ", threading.active_count())                    
+            var._debug and print("A Thread => ", threading.active_count())                                
             sleep(var._sleep_time_small) #small time  
+            var._debug and print("Running Thread: ", threading.current_thread())      
         except KeyboardInterrupt:
             var._debug and print("Keyboard Interrupt")
             break    
