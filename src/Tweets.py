@@ -110,7 +110,7 @@ class StdOutListener(StreamListener):
         except Exception as e:
             var._debug and print("Exception: ",{e})            
 
-        var._debug and print("Iteration Count: ", self.__count)
+        var._active_print and print("Iteration Count: ", self.__count)
         return True        
 
 # Fetch Tweets from Tweepy

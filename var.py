@@ -7,16 +7,17 @@ except Exception as e:
 
 # Define Variables
 _deployment_env = True
+_active_print = True
 
 if _deployment_env:
    # Prod ENV
    # Debug
-    _debug = True
+    _debug = False
     # Sleep
-    _sleep_time_small = random.randint(1, 10)
+    _sleep_time_small = random.randint(10, 30)
     # tweepy 
-    _tweet_max_count = 500
-    _tweet_limit = 500
+    _tweet_max_count = int(random.randint(200, 700))
+    _tweet_limit = int(random.randint(250, 500))
     _consumer_key =    environ['C_KEY']   
     _consumer_secret = environ['C_SEC']
     _auth_token =    environ['A_TOKEN']
@@ -38,9 +39,10 @@ else:
     _auth_token =  key._auth_token 
     _auth_secret =  key._auth_secret 
     _mongo_uri =  key._mongo_uri 
-    
-_min_text_len = 150    
-_offset = random.randint(0, 1500)
+
+_min_text_len = 150
+_offset = int(random.randint(0, 500))
+
 # msg
 _init_msg = " Initiated !!"
 _complete_msg = " Completed!!"

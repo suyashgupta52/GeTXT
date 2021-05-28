@@ -16,7 +16,15 @@ class DataCleaning(object):
 
     def _cleaning(self):        
         _db = MongoDB(var._db_client, var._db_name)
-        _mts = MTS()                                
+        _mts = MTS()
+        
+        _total = int(_db._count())
+        var._active_print and print("Total Count: ", _total)
+        _unprocessed = int(_db._count({"_translated_text_polarity": None}))
+        var._active_print and print("Unprocessed Count: ", _unprocessed)
+        self.__count = _total - _unprocessed
+        var._active_print and print("Processed Count: ", self.__count)
+                
         for data in _db._sorted_find({"_translated_text_polarity": None}, var._tweet_limit, var._offset):
             text = data['__text']
             id = data['_id']
@@ -42,6 +50,7 @@ class DataCleaning(object):
             var._debug and print("Data Ready for CSV Count: ", self.__count)
     
     def __del__(self):
+        var._active_print and print("Processed Count: ", self.__count)
         var._debug and print("Data Cleaning"+ var._complete_msg)
 
 
