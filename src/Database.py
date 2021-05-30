@@ -18,6 +18,9 @@ class MongoDB(object):
 
     def _update(self, where_condition, set_data):
         self.__col.update_one(where_condition, set_data)
+        
+    def _aggregate(self, arr):
+        return self.__col.aggregate(arr)
 
     def _count(self, obj = None):
         return self.__col.find(obj).count()
