@@ -10,13 +10,20 @@ _deployment_env = True
 _active_print = True
 
 _model_arg_1 = [
-]
-
-_model_arg_2 = [
-]
-
-_model_arg_3 = [
-]
+                "Good News",
+                "Bad News",
+		'Empathetic pain',
+                'Entrancement',
+                "Deaths"]
+_model_arg_2=[
+                "Covid Deaths",
+		'Annoyed',
+                "Depressed"]
+_model_arg_3=[
+                "Unhappy",
+                'Nostalgia',
+                'Relief',
+                "Lost Job"]
 
 
 if _deployment_env:
